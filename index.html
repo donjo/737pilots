@@ -7,7 +7,7 @@
   <title>PilotPals - Connect Before You Fly</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Patrick+Hand&family=Schoolbell&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -22,7 +22,7 @@
         linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
       background-size: 30px 30px;
-      font-family: 'Patrick Hand', cursive;
+      font-family: 'Nunito', sans-serif;
       color: #f5f5dc;
       display: flex;
       flex-direction: column;
@@ -46,6 +46,82 @@
       pointer-events: none;
     }
 
+    /* Flying airplane animations in background */
+    .flying-plane {
+      position: fixed;
+      font-size: 2rem;
+      opacity: 0.15;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .plane-1 {
+      animation: fly-across-1 25s linear infinite;
+      top: 15%;
+    }
+
+    .plane-2 {
+      animation: fly-across-2 30s linear infinite;
+      animation-delay: -10s;
+      top: 70%;
+      font-size: 1.5rem;
+    }
+
+    .plane-3 {
+      animation: fly-across-3 20s linear infinite;
+      animation-delay: -5s;
+      top: 40%;
+      font-size: 2.5rem;
+    }
+
+    @keyframes fly-across-1 {
+      0% { left: -10%; transform: rotate(-5deg); }
+      100% { left: 110%; transform: rotate(-5deg); }
+    }
+
+    @keyframes fly-across-2 {
+      0% { left: 110%; transform: rotate(175deg); }
+      100% { left: -10%; transform: rotate(175deg); }
+    }
+
+    @keyframes fly-across-3 {
+      0% { left: -10%; transform: rotate(-8deg); }
+      100% { left: 110%; transform: rotate(-8deg); }
+    }
+
+    /* Floating clouds */
+    .cloud {
+      position: fixed;
+      opacity: 0.08;
+      pointer-events: none;
+      z-index: 0;
+      font-size: 4rem;
+    }
+
+    .cloud-1 {
+      top: 10%;
+      animation: float-cloud 40s linear infinite;
+    }
+
+    .cloud-2 {
+      top: 80%;
+      animation: float-cloud 50s linear infinite;
+      animation-delay: -20s;
+      font-size: 3rem;
+    }
+
+    .cloud-3 {
+      top: 50%;
+      animation: float-cloud 35s linear infinite;
+      animation-delay: -10s;
+      font-size: 5rem;
+    }
+
+    @keyframes float-cloud {
+      0% { left: -15%; }
+      100% { left: 115%; }
+    }
+
     .chalkboard-frame {
       border: 12px solid #8B4513;
       border-radius: 4px;
@@ -58,6 +134,7 @@
       max-width: 1100px;
       width: 100%;
       position: relative;
+      z-index: 1;
     }
 
     .chalk-dust {
@@ -100,19 +177,34 @@
     }
 
     .tagline {
-      font-family: 'Schoolbell', cursive;
-      font-size: 1.4rem;
-      margin-top: 5px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 1.3rem;
+      margin-top: 8px;
       opacity: 0.9;
-      font-style: italic;
+      font-weight: 600;
+      letter-spacing: 1px;
     }
 
-    .underline-chalk {
-      height: 3px;
-      background: linear-gradient(to right, transparent, #f5f5dc 20%, #f5f5dc 80%, transparent);
+    .plane-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       margin: 15px auto;
       width: 80%;
+      gap: 15px;
       opacity: 0.6;
+    }
+
+    .plane-divider::before,
+    .plane-divider::after {
+      content: '';
+      flex: 1;
+      height: 2px;
+      background: linear-gradient(to right, transparent, #f5f5dc, transparent);
+    }
+
+    .plane-divider .divider-plane {
+      font-size: 1.2rem;
     }
 
     .content {
@@ -123,8 +215,8 @@
     }
 
     .intro {
-      font-size: 1.2rem;
-      line-height: 1.6;
+      font-size: 1.1rem;
+      line-height: 1.7;
     }
 
     .intro p {
@@ -133,7 +225,7 @@
 
     .highlight {
       color: #FFE4B5;
-      font-weight: bold;
+      font-weight: 700;
       text-decoration: underline;
       text-decoration-style: wavy;
       text-underline-offset: 3px;
@@ -144,8 +236,8 @@
     }
 
     .features h2 {
-      font-family: 'Schoolbell', cursive;
-      font-size: 1.6rem;
+      font-family: 'Fredericka the Great', cursive;
+      font-size: 1.5rem;
       margin-bottom: 15px;
       display: flex;
       align-items: center;
@@ -153,7 +245,7 @@
     }
 
     .features h2::before {
-      content: '★';
+      content: '✈';
       color: #FFE4B5;
     }
 
@@ -163,9 +255,9 @@
 
     .feature-list li {
       padding: 10px 0;
-      padding-left: 35px;
+      padding-left: 40px;
       position: relative;
-      font-size: 1.15rem;
+      font-size: 1.05rem;
       border-bottom: 1px dashed rgba(255,255,255,0.2);
     }
 
@@ -174,23 +266,50 @@
     }
 
     .feature-list li::before {
-      content: '✓';
       position: absolute;
       left: 5px;
-      color: #90EE90;
-      font-size: 1.3rem;
-      font-weight: bold;
+      font-size: 1.1rem;
     }
+
+    .feature-list li:nth-child(1)::before { content: '🛫'; }
+    .feature-list li:nth-child(2)::before { content: '💬'; }
+    .feature-list li:nth-child(3)::before { content: '🎯'; }
+    .feature-list li:nth-child(4)::before { content: '🤝'; }
+    .feature-list li:nth-child(5)::before { content: '📍'; }
+    .feature-list li:nth-child(6)::before { content: '🛬'; }
 
     .doodle {
       position: absolute;
-      opacity: 0.15;
-      font-size: 4rem;
+      opacity: 0.12;
       pointer-events: none;
     }
 
-    .doodle-1 { top: 10px; right: 20px; transform: rotate(15deg); }
-    .doodle-2 { bottom: 20px; left: 10px; transform: rotate(-10deg); }
+    .doodle-1 {
+      top: 8px;
+      right: 15px;
+      font-size: 3.5rem;
+      transform: rotate(20deg);
+    }
+
+    .doodle-2 {
+      bottom: 60px;
+      left: 8px;
+      font-size: 2.5rem;
+      transform: rotate(-15deg);
+    }
+
+    .doodle-3 {
+      top: 50%;
+      right: 45%;
+      font-size: 2rem;
+      transform: rotate(10deg);
+    }
+
+    .doodle-4 {
+      bottom: 15px;
+      right: 40%;
+      font-size: 2rem;
+    }
 
     .cta-section {
       text-align: center;
@@ -200,7 +319,9 @@
     }
 
     .cta-button {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
       background: #FFE4B5;
       color: #2a5a3a;
       font-family: 'Fredericka the Great', cursive;
@@ -222,11 +343,20 @@
         0 0 30px rgba(255,228,181,0.5);
     }
 
+    .cta-button .btn-plane {
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+
+    .cta-button:hover .btn-plane {
+      transform: translateX(5px) rotate(-10deg);
+    }
+
     .fun-fact {
-      font-family: 'Schoolbell', cursive;
-      font-size: 1rem;
+      font-size: 0.95rem;
       margin-top: 15px;
       opacity: 0.8;
+      font-weight: 600;
     }
 
     .fun-fact .arrow {
@@ -244,6 +374,13 @@
       font-size: 0.9rem;
       opacity: 0.6;
       text-align: center;
+      z-index: 1;
+      position: relative;
+    }
+
+    footer .footer-plane {
+      display: inline-block;
+      margin: 0 5px;
     }
 
     /* Chalk texture effect on text */
@@ -266,21 +403,39 @@
       .chalkboard-frame {
         padding: 20px 25px;
       }
+
+      .flying-plane, .cloud {
+        display: none;
+      }
     }
   </style>
 </head>
 
 <body>
+  <!-- Background flying planes -->
+  <span class="flying-plane plane-1">✈</span>
+  <span class="flying-plane plane-2">✈</span>
+  <span class="flying-plane plane-3">✈</span>
+
+  <!-- Background clouds -->
+  <span class="cloud cloud-1">☁</span>
+  <span class="cloud cloud-2">☁</span>
+  <span class="cloud cloud-3">☁</span>
+
   <div class="chalkboard-frame">
     <span class="doodle doodle-1">✈</span>
-    <span class="doodle doodle-2">☁</span>
+    <span class="doodle doodle-2">🛩</span>
+    <span class="doodle doodle-3">☁</span>
+    <span class="doodle doodle-4">⭐</span>
 
     <header>
       <h1 class="logo chalk-text">
         <span class="plane-icon">✈</span>PilotPals
       </h1>
       <p class="tagline">"Know Your Co-Pilot Before You Fly Together"</p>
-      <div class="underline-chalk"></div>
+      <div class="plane-divider">
+        <span class="divider-plane">✈</span>
+      </div>
     </header>
 
     <div class="content">
@@ -313,7 +468,10 @@
     </div>
 
     <div class="cta-section">
-      <a href="#" class="cta-button">Join the Crew!</a>
+      <a href="#" class="cta-button">
+        Join the Crew!
+        <span class="btn-plane">✈</span>
+      </a>
       <p class="fun-fact">
         <span class="arrow">↑</span>
         Over 2,000 pilots already connecting!
@@ -326,6 +484,7 @@
 
   <footer>
     Made with ❤ for pilots who believe the best flights start with friendship
+    <span class="footer-plane">✈</span>
   </footer>
 </body>
 </html>
