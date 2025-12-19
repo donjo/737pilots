@@ -1,5 +1,8 @@
-import { serveFile } from "jsr:@std/http/file-server";
+import { App, staticFiles } from "@fresh/core";
 
-Deno.serve((req: Request) => {
-    return serveFile(req, "./index.html");
-});
+export const app = new App({ root: import.meta.url })
+  .use(staticFiles());
+
+if (import.meta.main) {
+  await app.listen();
+}
