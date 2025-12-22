@@ -10,7 +10,7 @@ export default define.page(function App({ Component }) {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Patrick+Hand&family=Schoolbell&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Pacifico&display=swap"
           rel="stylesheet"
         />
       </head>

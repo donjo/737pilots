@@ -5,20 +5,20 @@ import PilotCounter from "../islands/PilotCounter.tsx";
 export default define.page(function Home() {
   return (
     <>
-      <div class="chalkboard-frame">
-        <span class="doodle doodle-1">✈</span>
-        <span class="doodle doodle-2">☁</span>
+      <div class="sky-card">
+        <span class="cloud-accent cloud-1">☁</span>
+        <span class="cloud-accent cloud-2">☁</span>
 
         <header>
-          <h1 class="logo chalk-text">
+          <h1 class="logo">
             <span class="plane-icon">✈</span>PilotPals
           </h1>
           <p class="tagline">"Know Your Co-Pilot Before You Fly Together"</p>
-          <div class="underline-chalk"></div>
+          <div class="divider-line"></div>
         </header>
 
         <div class="content">
-          <div class="intro chalk-text">
+          <div class="intro">
             <p>
               Flying a 737 is all about <span class="highlight">teamwork</span>. But how well do you
               really know the person sitting next to you in the cockpit?
@@ -34,7 +34,7 @@ export default define.page(function Home() {
           </div>
 
           <div class="features">
-            <h2 class="chalk-text">What You'll Get</h2>
+            <h2>What You'll Get</h2>
             <ul class="feature-list">
               <li>See who you're flying with before your shift</li>
               <li>Chat & get to know your crew ahead of time</li>
@@ -50,8 +50,6 @@ export default define.page(function Home() {
           <JoinButton />
           <PilotCounter initialCount={2000} />
         </div>
-
-        <div class="chalk-dust"></div>
       </div>
 
       <footer>
