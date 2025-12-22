@@ -1,6 +1,6 @@
-import type { PageProps } from "@fresh/core";
+import { define } from "../utils.ts";
 
-export default function App({ Component }: PageProps) {
+export default define.page(function App({ Component }) {
   return (
     <html lang="en">
       <head>
@@ -13,11 +13,10 @@ export default function App({ Component }: PageProps) {
           href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Patrick+Hand&family=Schoolbell&display=swap"
           rel="stylesheet"
         />
-        <link rel="stylesheet" href="/styles.css" />
       </head>
       <body>
         <Component />
       </body>
     </html>
   );
-}
+});
