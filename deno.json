@@ -1,4 +1,8 @@
 {
+  "deploy": {
+    "org": "donjo3",
+    "app": "737pilots"
+  },
   "nodeModulesDir": "manual",
   "tasks": {
     "check": "deno fmt --check . && deno lint . && deno check",
