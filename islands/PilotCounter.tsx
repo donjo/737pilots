@@ -11,7 +11,7 @@ export default function PilotCounter({ initialCount }: PilotCounterProps) {
 
   useEffect(() => {
     // Animate the counter from 0 to target
-    const duration = 2000; // 2 seconds
+    const duration = 1000; // 2 seconds
     const steps = 60;
     const increment = targetCount.value / steps;
     let current = 0;
